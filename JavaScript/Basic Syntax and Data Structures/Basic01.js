@@ -1,9 +1,12 @@
 /*
  * Author: Felipe Castro
- * File: Basic.js
- * Information: File with multiple basic structures of Javascript
+ * File: Basic01.js
+ * Information: File with multiple basic types,operators,arrays and functions of Javascript
  * How to run this file: Just use -> node Basic01.js or include the js file on a html/jsp file to use it
 */
+
+
+
 
 // NOTE: JS = JavaScript
 
@@ -47,7 +50,6 @@ let number1 = 4;
 var number2 = 4;
 console.log('The value of number1 is ' + number1);
 console.log('The value of number2 is ' + number2);
-console.log('\n');
 /*
     TYPEOF EXAMPLES
 typeof "John"                 // Returns string
@@ -61,8 +63,7 @@ typeof function () {}         // Returns function
 typeof myCar                  // Returns undefined (if myCar is not declared)
 typeof null                   // Returns object
 */
-
-
+console.log('\n');
 
 
 
@@ -90,11 +91,36 @@ console.log('Values of myNumberO3: ' + myNumberO3 + ' and myNumberO4: ' + myNumb
 console.log('Doing myNumberO4=myNumberO3++');
 myNumberO4 = myNumberO3++;
 console.log('Values of myNumberO3: ' + myNumberO3 + ' and myNumberO4: ' + myNumberO4);
-
-
 console.log('\n');
 
 
+
+
+
+console.log('===== Strings Methods in JavaScript ===== \n');
+// String Methods in JavaScript
+// 1. Defining the String
+var myStringS1 = 'Hello World, I am back!';
+console.log('My original string: ' + myStringS1);
+
+// 2. Using the methods 
+// slice method
+console.log('Applying the slice method: ' + myStringS1.slice(6, 11));
+// upper method
+console.log('Applying the upper method: ' + myStringS1.toUpperCase());
+// trim method
+console.log('Applying the trim method: ' + myStringS1.trim());
+// replace method
+console.log('Applying the replace method: ' + myStringS1.replace('Hello', 'Goodbye'));
+// indexOf method
+console.log('Applying the indexof method: ' + myStringS1.indexOf('World'));
+// search method
+console.log('Applying the search method: ' + myStringS1.search('am'));
+// startsWith method
+console.log('Applying the startsWith method: ' + myStringS1.startsWith('Hello'));
+
+
+console.log('\n');
 
 
 
@@ -128,10 +154,6 @@ console.log('\n');
 
 
 
-
-
-
-
 console.log('===== Conditionals ===== \n');
 // We have if, if else and if then else 
 if (4 < 5) {
@@ -156,8 +178,6 @@ if (myNumberB1 > myNumberB2) {
 // Also we can use the ternary operator to compare the numbers
 ('Hello1' == 'Hello2') ? console.log('Hello1 is equal to Hello2') : console.log('Hello1 is not equal to Hello2');
 console.log('\n');
-
-
 
 
 
@@ -197,9 +217,6 @@ console.log('\n');
 
 
 
-
-
-
 console.log('===== Loops ===== \n');
 console.log('While');
 var myNumberL1 = 0;
@@ -221,10 +238,6 @@ for (var i = 0; i < 4; i++) {
     console.log('Printing the value of i ' + i);
 }
 console.log('\n');
-
-
-
-
 
 
 
@@ -255,8 +268,12 @@ var myArrayA3 = [3];
 // Printing array using let
 console.log('Initial Array: ');
 for (let number of myArrayA3) {
-    console.log('myArrayA3 = ' + number);
+    console.log('Way #1 - myArrayA3 = ' + number);
 }
+for (let index in myArrayA3) {
+    console.log('Way #2 - myArrayA3 = ' + myArrayA3[index]);
+}
+
 console.log('Initial Length: ' + myArrayA3.length);
 // push(element) -> Add element at the end of the array
 myArrayA3.push(4);
@@ -302,11 +319,42 @@ console.log('\n');
 
 
 
+console.log('===== Functions in JavaScript ===== \n');
+// Defining a function using the keyword function
+function sumTwoNumbers(number1, number2) {
+    return number1 + number2;
+}
+function minusTwo(number3) {
+    number3 = number3 + 2;
+    console.log('Value of number inside the method ' + number3);
+}
+// Calling the functions
+console.log('The sum of 4 and 2 is: ' + sumTwoNumbers(4, 2));
+var numberToModify = 4;
+console.log('Original Number ' + numberToModify);
+minusTwo(numberToModify);
+console.log('Value of number outside and after calling the method: ' + numberToModify); // It will show the original value
+function numberToModifyWithoutParameter() {
+    numberToModify = 10;
+}
+console.log('Value of number outside and after calling the method without parameter: ' + numberToModify); // It will show the original value
+// Self-Invoking functions, in the next function the variable counter will keep private for just the method itself
+const increaseCounter = (function () {
+    let counter = 0;
+    return function () { counter += 1; return counter }
+})();
+increaseCounter();
+increaseCounter();
+var counter=increaseCounter();
+console.log('The value of the counter is '+counter);
+console.log('\n');
 
 
 
 
-console.log('===== Useful Methods in JavaScript ===== \n');
+
+
+console.log('===== Useful Methods/Definitions in JavaScript ===== \n');
 console.log('Transform string to array');
 var myStringU1 = "ABCDEFGH";
 var myArrayU1 = Array.from(myStringU1);
@@ -314,13 +362,18 @@ console.log('New Array from string: ' + myArrayU1.toString());
 console.log('Transform array to string');
 var myStringU2 = myArrayU1.join('-');
 console.log('Array translated into string again but separating each value with - : ' + myStringU2);
+console.log('Defining a constant');
+/*
+The const keyword was introduced in ES6 (2015).
+Variables defined with const cannot be Redeclared.
+Variables defined with const cannot be Reassigned.
+Variables defined with const have Block Scope.
+*/
+const PI = 3.14159226;
 console.log('\n');
 
 
 
-
-
-/*
 console.log('===== Capturing Data ===== \n');
 // We can capture data in JS like in any other language
 // Since we are using NodeJS we will need to install prompt with: npm install prompt -- save, then follow these steps:
@@ -338,4 +391,3 @@ prompt.get(['status', 'age'], function (err, result) {
     console.log('  Age: ' + result.age);
 });
 console.log('\n');
-*/
