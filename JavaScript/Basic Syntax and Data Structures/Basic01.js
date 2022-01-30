@@ -391,3 +391,4 @@ prompt.get(['status', 'age'], function (err, result) {
     console.log('  Age: ' + result.age);
 });
 console.log('\n');
+
