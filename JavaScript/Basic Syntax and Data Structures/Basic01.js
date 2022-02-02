@@ -315,6 +315,64 @@ Array.prototype.sumFive = function () {
 // Applying the function to the array sorted
 myArrayA4.sumFive();
 console.log("Array Sorted After Applying Sum Five: " + myArrayA4.toString());
+console.log("Creating a new Array: ");
+var myArrayA5 = [2,3,4,5,6,1,1,2,5,6,3,4];
+// Creating functions to:
+// Sort 
+function sortAsc(a,b){
+    return a-b;
+}
+// Filter
+function arrayHavingThisCondition(a){
+    return a>4;
+}
+// Find
+function findNumber2(a){
+    return a==2;
+}
+// Print Array
+function printArray(a){
+    let array='';
+    a.forEach(function(element){
+        array+=' '+element;
+    })
+    console.log(array);
+}
+// Printing the original Array
+console.log('Original Array:');
+printArray(myArrayA5);
+// Applying functions to the array
+console.log('Array after sorting asc:');
+myArrayA5.sort(sortAsc);
+printArray(myArrayA5);
+// Applying find to the array - Return the first element that matches the condition
+if(myArrayA5.find(findNumber2)==2){
+    console.log('The value 2 was found');
+}else{
+    console.log('The value 2 was not found');
+}
+// Applying findIndex to the array - Return the index of the first element that matches the condition
+let indexA= myArrayA5.findIndex(findNumber2);
+if(!(indexA==-1)){
+    console.log('The value 2 was not found on the position '+indexA+'');
+}else{
+    console.log('The value 2 was not');
+}
+console.log('Array after applying the find:');
+printArray(myArrayA5);
+// Applying the filter to the array - Create a new array with the elements matching the condition
+let arrayFiltered=myArrayA5.filter(arrayHavingThisCondition);
+console.log('Array after applying the filter (Same Array because Filter dont modify the original array):');
+printArray(myArrayA5);
+console.log('This is the new array filtered');
+printArray(arrayFiltered);
+// Useful function in Matrices to send rows to columns and columns to rows:
+function columnsToRows(matrix) {
+    let [row] = matrix
+    return row.map((value, column) => matrix.map(row => row[column]));
+}
+
+
 console.log('\n');
 
 
