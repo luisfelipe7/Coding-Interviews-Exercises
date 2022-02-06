@@ -316,25 +316,54 @@ Array.prototype.sumFive = function () {
 myArrayA4.sumFive();
 console.log("Array Sorted After Applying Sum Five: " + myArrayA4.toString());
 console.log("Creating a new Array: ");
-var myArrayA5 = [2,3,4,5,6,1,1,2,5,6,3,4];
+var myArrayA5 = [2, 3, 4, 5, 6, 1, 1, 2, 5, 6, 3, 4];
 // Creating functions to:
 // Sort 
-function sortAsc(a,b){
-    return a-b;
+function sortAsc(a, b) {
+    return a - b;
 }
 // Filter
-function arrayHavingThisCondition(a){
-    return a>4;
+function arrayHavingThisCondition(a) {
+    return a > 4;
 }
 // Find
-function findNumber2(a){
-    return a==2;
+function findNumber2(a) {
+    return a == 2;
 }
+// Reduce 
+// Sum all the elements on the array
+function getSum(total, number) {
+    return total + number;
+}
+// Sum the elements that are bigger than 4
+function getSumOfBiggerThan4(total, number) {
+    if (number > 4) {
+        return total + number;
+    } else {
+        return total
+    }
+}
+// Useful to find first positive value
+function findFirstPositiveValue(value){
+    return (value>=0);
+}
+// Useful to find max value on the array
+function findMaxValue(accumulatedValue,currentValue){
+    return Math.max(accumulatedValue, currentValue);
+}
+// Find specific value on array based on parameter
+function findValue(value){
+    function findNumber(a) {
+    return a == value;
+    }
+    return findNumber;
+}
+
 // Print Array
-function printArray(a){
-    let array='';
-    a.forEach(function(element){
-        array+=' '+element;
+function printArray(a) {
+    let array = '';
+    a.forEach(function (element) {
+        array += ' ' + element;
     })
     console.log(array);
 }
@@ -342,26 +371,28 @@ function printArray(a){
 console.log('Original Array:');
 printArray(myArrayA5);
 // Applying functions to the array
+console.log('Sum of the elements on the array: ');
+myArrayA5.reduce(getSum, 0); // We enter Zero as the total
 console.log('Array after sorting asc:');
 myArrayA5.sort(sortAsc);
 printArray(myArrayA5);
 // Applying find to the array - Return the first element that matches the condition
-if(myArrayA5.find(findNumber2)==2){
+if (myArrayA5.find(findNumber2) == 2) {
     console.log('The value 2 was found');
-}else{
+} else {
     console.log('The value 2 was not found');
 }
 // Applying findIndex to the array - Return the index of the first element that matches the condition
-let indexA= myArrayA5.findIndex(findNumber2);
-if(!(indexA==-1)){
-    console.log('The value 2 was not found on the position '+indexA+'');
-}else{
+let indexA = myArrayA5.findIndex(findNumber2);
+if (!(indexA == -1)) {
+    console.log('The value 2 was not found on the position ' + indexA + '');
+} else {
     console.log('The value 2 was not');
 }
 console.log('Array after applying the find:');
 printArray(myArrayA5);
 // Applying the filter to the array - Create a new array with the elements matching the condition
-let arrayFiltered=myArrayA5.filter(arrayHavingThisCondition);
+let arrayFiltered = myArrayA5.filter(arrayHavingThisCondition);
 console.log('Array after applying the filter (Same Array because Filter dont modify the original array):');
 printArray(myArrayA5);
 console.log('This is the new array filtered');
@@ -374,6 +405,10 @@ function columnsToRows(matrix) {
 
 
 console.log('\n');
+
+
+
+
 
 
 
@@ -403,8 +438,8 @@ const increaseCounter = (function () {
 })();
 increaseCounter();
 increaseCounter();
-var counter=increaseCounter();
-console.log('The value of the counter is '+counter);
+var counter = increaseCounter();
+console.log('The value of the counter is ' + counter);
 console.log('\n');
 
 
