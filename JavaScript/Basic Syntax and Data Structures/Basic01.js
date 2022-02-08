@@ -465,7 +465,15 @@ Variables defined with const have Block Scope.
 const PI = 3.14159226;
 console.log('\n');
 
+/* 
+let s='4 344444';
 
+s.split(' ');
+(2) ['4', '344444']
+s.substring(2,s.length);
+'344444'
+
+*/
 
 console.log('===== Capturing Data ===== \n');
 // We can capture data in JS like in any other language

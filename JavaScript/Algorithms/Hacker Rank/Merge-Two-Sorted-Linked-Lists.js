@@ -10,7 +10,6 @@
  *
  */
 function mergeLists(head1, head2) {
-
     // Creating the new SinglyLinkedListNode that will be in charge of keeping the merged values
     var head3 = new SinglyLinkedListNode();
 
@@ -33,13 +32,13 @@ function mergeLists(head1, head2) {
                 if (head1.data > head2.data) { // head1 value is bigger
                     head3.data = head2.data;
                     head3.next = tempNode;
-                    head2 = head2.next();
+                    head2 = head2.next;
                 } else { // head1 is smaller or equal
                     head3.data = head1.data;
                     head3.next = tempNode;
-                    head1 = head1.next();
+                    head1 = head1.next;
                 }
-
+                                
                 // Comparing
                 while (head1 != null || head2 != null) {
                     temp2Node = tempNode; // Copying the reference of actual
@@ -67,8 +66,7 @@ function mergeLists(head1, head2) {
                         }
                     }
                 }
-
-                tempNode2.next = null;
+                temp2Node.next = null;
 
             }
 
@@ -76,4 +74,21 @@ function mergeLists(head1, head2) {
     }
 
     return head3;
+}
+
+function printList(head) {
+    let elements = null;
+    if (head != null) {
+        if (head.next == null) {
+            elements = head.data + ' ';
+        }else{
+            elements = head.data + ' ';
+            while (head.next != null) {
+                head = head.next;
+                elements += head.data+' ';
+            }
+        }
+    }
+
+    console.log(elements);
 }
